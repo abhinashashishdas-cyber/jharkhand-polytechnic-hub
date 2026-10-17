@@ -1,1 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jharkhand Polytechnic Hub</title>
+<style>
+:root{--bg:#f3f6f3;--card:#fff;--ink:#14201b;--mute:#4d5d56;--pri:#0f4c3a;--onpri:#fff;--acc:#e0a100;--line:#d5ded8;--ok:#0b6b3a;--bad:#b3261e;--okbg:#e3f4ea;--badbg:#fbe7e5;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1512;--card:#17211c;--ink:#e8efeb;--mute:#a3b2aa;--pri:#58c49a;--onpri:#06231a;--acc:#f0b429;--line:#2a3a33;--ok:#6fdc9f;--bad:#ff8a80;--okbg:#14301f;--badbg:#3a1a18}}
+:root[data-theme="dark"]{--bg:#0e1512;--card:#17211c;--ink:#e8efeb;--mute:#a3b2aa;--pri:#58c49a;--onpri:#06231a;--acc:#f0b429;--line:#2a3a33;--ok:#6fdc9f;--bad:#ff8a80;--okbg:#14301f;--badbg:#3a1a18}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+h1,h2,h3{font-family:Georgia,"Noto Serif",serif;line-height:1.25;margin:0 0 .5rem}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+header{background:var(--pri);color:var(--onpri);position:sticky;top:0;z-index:5}
+.bar{max-width:960px;margin:auto;padding:.6rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.1rem;text-decoration:none}
+nav{display:flex;gap:.25rem;flex-wrap:wrap}
+nav a{text-decoration:none;padding:.35rem .7rem;border-radius:8px;font-size:.95rem}
+nav a:hover{background:rgba(255,255,255,.18)}
+main{max-width:960px;margin:auto;padding:0 1rem 3rem}
+.hero{padding:2rem 0 1rem}
+.hero h1{font-size:clamp(1.7rem,6vw,2.6rem)}
+.hero p{color:var(--mute);max-width:56ch;margin:.25rem 0 1rem}
+.search{display:flex;gap:.5rem}
+.search input{flex:1;min-width:0;padding:.8rem 1rem;font:inherit;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink)}
+.search input:focus{border-color:var(--pri)}
+#results{margin-top:.75rem}
+.res{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.65rem .9rem;margin-bottom:.5rem;color:var(--ink)}
+.res small{color:var(--mute);display:block}
+section{padding-top:2rem;scroll-margin-top:5.5rem}
+.note{background:var(--card);border-left:5px solid var(--acc);padding:.6rem .9rem;border-radius:6px;font-size:.93rem;color:var(--mute);margin:.5rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+.card{background:var(--card);border:2px solid var(--line);border-radius:12px;padding:1rem;text-align:left;color:var(--ink);transition:border-color .15s}
+.card:hover{border-color:var(--pri)}
+.card[aria-pressed="true"]{border-color:var(--pri);box-shadow:inset 0 0 0 1px var(--pri)}
+.card b{display:block;font-size:1.05rem}
+.card span{color:var(--mute);font-size:.9rem}
+.sems{display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{min-width:3.4rem;padding:.6rem 1rem;border-radius:999px;border:2px solid var(--line);background:var(--card);color:var(--ink);font-weight:600}
+.chip[aria-pressed="true"]{background:var(--pri);color:var(--onpri);border-color:var(--pri)}
+.tag{display:inline-block;font-size:.75rem;background:var(--acc);color:#1b1400;border-radius:6px;padding:0 .4rem;margin-left:.4rem;font-weight:600;vertical-align:middle}
+.sel{color:var(--mute);margin:.25rem 0 1rem}
+.btn{background:var(--pri);color:var(--onpri);border:0;border-radius:10px;padding:.75rem 1.25rem;font-weight:600}
+.btn.alt{background:transparent;color:var(--pri);border:2px solid var(--pri)}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1rem;margin-bottom:.8rem}
+.q p{margin:0 0 .5rem;font-weight:600}
+.opt{display:block;padding:.5rem .7rem;border:1px solid var(--line);border-radius:8px;margin:.3rem 0;cursor:pointer}
+.opt input{margin-right:.5rem}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.exp{margin-top:.5rem;font-size:.93rem;color:var(--mute)}
+.score{font-family:Georgia,serif;font-size:1.8rem;margin:.5rem 0}
+footer{text-align:center;color:var(--mute);font-size:.88rem;padding:1.5rem 1rem 2rem}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<a class="logo" href="#top">Jharkhand Polytechnic Hub</a>
+<nav aria-label="Main"><a href="#branches">Branches</a><a href="#semesters">Semesters</a><a href="#subjects">Subjects</a><a href="#quiz">Quiz</a><a href="#about">About</a></nav>
+</div></header>
 
+<main id="top">
+<div class="hero">
+<h1>Jharkhand Polytechnic students ke liye free study hub</h1>
+<p>Notes, important questions and chapter-wise tests. Branch aur semester chuno, phir padhai shuru karo.</p>
+<form class="search" role="search" onsubmit="return false">
+<input id="q" type="search" placeholder="Search subject, chapter ya question" aria-label="Search" autocomplete="off">
+</form>
+<div id="results" aria-live="polite"></div>
+</div>
+
+<div class="note"><b>Prototype (Stage 1):</b> Yahan ka sab content SAMPLE hai. Official syllabus ya question papers abhi add nahi kiye gaye hain. Verified content baad mein judega.</div>
+
+<section id="branches">
+<h2>1. Branch chuno</h2>
+<p class="note">Branch list sample hai. Apne college ki official list se verify karke final karenge.</p>
+<div class="grid" id="branchGrid"></div>
+</section>
+
+<section id="semesters">
+<h2>2. Semester chuno</h2>
+<div class="sems" id="semRow"></div>
+<p class="sel" id="selText"></p>
+</section>
+
+<section id="subjects">
+<h2>3. Subjects</h2>
+<p class="note">Neeche ke subjects sirf demo ke liye hain, official syllabus nahi.</p>
+<div class="grid" id="subGrid"></div>
+<h2 id="chTitle" style="margin-top:1.5rem"></h2>
+<div class="grid" id="chGrid"></div>
+</section>
+
+<section id="quiz">
+<h2 id="quizTitle">4. Chapter quiz</h2>
+<p class="sel" id="quizHint">Upar se ek chapter chuno. Sample chapter: Computer Basics.</p>
+<div id="quizBox"></div>
+</section>
+
+<section id="about">
+<h2>Aage kya aayega</h2>
+<p class="note">Notes, important questions, bookmarks aur progress tracking baad ke stages mein aayenge. Abhi koi login ya permanent save nahi hai.</p>
+</section>
+</main>
+<footer>Jharkhand Polytechnic Hub — student-made, free, unofficial. Prototype.</footer>
+
+<script>
+const BRANCHES=[
+["Computer Science & Engineering","CSE"],["Civil Engineering","CE"],["Mechanical Engineering","ME"],
+["Electrical Engineering","EE"],["Electronics Engineering","ECE"],["Other branches","Baad mein add honge"]];
+const SUBJECTS=[
+{id:"cf",name:"Computer Fundamentals",hi:"Computer ki basic jaankari",chapters:[{id:"cb",name:"Chapter 1: Computer Basics",quiz:true},{id:"mem",name:"Chapter 2: Memory and Storage",quiz:false}]},
+{id:"en",name:"Basic English Communication",hi:"Simple English bolna aur likhna",chapters:[{id:"gr",name:"Chapter 1: Basic Grammar",quiz:false}]},
+{id:"ma",name:"Basic Mathematics",hi:"Maths ki buniyaad",chapters:[{id:"al",name:"Chapter 1: Algebra Basics",quiz:false}]}];
+const QUIZ=[
+["What is the full form of CPU?",["Central Processing Unit","Central Program Unit","Computer Personal Unit","Control Processing Utility"],0,"CPU = Central Processing Unit. Ye computer ka processing part hai."],
+["Which of these is an input device?",["Monitor","Keyboard","Printer","Speaker"],1,"Keyboard se hum data computer mein daalte hain, isliye ye input device hai."],
+["How many bits are in 1 byte?",["4","8","16","32"],1,"1 byte = 8 bits."],
+["RAM is which type of memory?",["Permanent","Volatile","Read-only","Optical"],1,"RAM volatile hai: power band hote hi data chala jaata hai."],
+["Which one is an operating system?",["Windows","Google Chrome","MS Word","Excel"],0,"Windows OS hai. Chrome browser hai aur Word/Excel application software hain."],
+["Binary number system uses which digits?",["0 to 9","0 and 1","1 and 2","0 to 7"],1,"Binary mein sirf 0 aur 1 hote hain."],
+["Which device stores data permanently?",["RAM","Cache","Hard disk","Register"],2,"Hard disk (ya SSD) mein data band karne ke baad bhi bacha rehta hai."],
+["What is the full form of USB?",["Universal Serial Bus","United System Board","Universal Storage Box","Unique Serial Block"],0,"USB = Universal Serial Bus."],
+["Which of these is an output device?",["Mouse","Scanner","Printer","Microphone"],2,"Printer computer se result bahar deta hai, isliye output device hai."],
+["Which part is called the 'brain' of the computer?",["Monitor","CPU","Keyboard","Mouse"],1,"CPU saare instructions process karta hai, isliye ise brain kehte hain."]];
+const st={branch:null,sem:null,sub:null};
+const $=id=>document.getElementById(id);
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function drawBranches(){
+$("branchGrid").innerHTML=BRANCHES.map((b,i)=>`<button class="card" data-i="${i}" aria-pressed="${st.branch===i}"><b>${b[0]}</b><span>${b[1]}</span></button>`).join("");
+$("branchGrid").querySelectorAll("button").forEach(el=>el.onclick=()=>{st.branch=+el.dataset.i;drawBranches();selText();go("semesters")});}
+function drawSems(){
+$("semRow").innerHTML=[1,2,3,4,5,6].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${st.sem===n}">Sem ${n}</button>`).join("");
+$("semRow").querySelectorAll("button").forEach(el=>el.onclick=()=>{st.sem=+el.dataset.n;drawSems();selText();go("subjects")});}
+function selText(){
+const b=st.branch===null?"branch nahi chuni":st.branch===5?"Other":BRANCHES[st.branch][1];
+$("selText").textContent="Aapka chunav: "+b+" | "+(st.sem?"Semester "+st.sem:"semester nahi chuna");}
+function drawSubs(){
+$("subGrid").innerHTML=SUBJECTS.map(s=>`<button class="card" data-id="${s.id}" aria-pressed="${st.sub===s.id}"><b>${s.name}<span class="tag">SAMPLE</span></b><span>${s.hi}</span></button>`).join("");
+$("subGrid").querySelectorAll("button").forEach(el=>el.onclick=()=>{st.sub=el.dataset.id;drawSubs();drawChs();});}
+function drawChs(){
+const s=SUBJECTS.find(x=>x.id===st.sub);
+if(!s){$("chTitle").textContent="";$("chGrid").innerHTML="";return}
+$("chTitle").textContent=s.name+" — Chapters";
+$("chGrid").innerHTML=s.chapters.map(c=>`<button class="card" data-id="${c.id}"><b>${c.name}</b><span>${c.quiz?"10-question quiz ready":"Quiz coming soon"}</span></button>`).join("");
+$("chGrid").querySelectorAll("button").forEach(el=>el.onclick=()=>openChapter(el.dataset.id));}
+function openChapter(id){
+if(id==="cb"){startQuiz();go("quiz")}
+else{$("quizTitle").textContent="4. Chapter quiz";$("quizHint").textContent="Is chapter ka quiz abhi sample mein nahi hai. Demo ke liye Computer Basics chuno.";$("quizBox").innerHTML="";go("quiz")}}
+function go(id){setTimeout(()=>$(id).scrollIntoView(),50)}
+
+function startQuiz(){
+$("quizTitle").textContent="4. Quiz: Computer Basics (sample)";
+$("quizHint").textContent="10 questions, har sahi jawab ka 1 mark. Sab attempt karke Submit dabao.";
+$("quizBox").innerHTML=QUIZ.map((q,i)=>`<fieldset class="q" style="border:1px solid var(--line)"><legend class="hide">Q${i+1}</legend><p>Q${i+1}. ${esc(q[0])}</p>${q[1].map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}">${esc(o)}</label>`).join("")}<div class="exp hide"></div></fieldset>`).join("")+`<button class="btn" id="sub">Submit</button><div id="score" aria-live="polite"></div>`;
+$("sub").onclick=submitQuiz;}
+function submitQuiz(){
+let sc=0,un=0;
+const qs=$("quizBox").querySelectorAll(".q");
+qs.forEach((box,i)=>{
+const pick=box.querySelector("input:checked"),ans=QUIZ[i][2],opts=box.querySelectorAll(".opt");
+if(!pick)un++;
+else if(+pick.value===ans)sc++;
+opts.forEach((o,j)=>{o.querySelector("input").disabled=true;if(j===ans)o.classList.add("ok");else if(pick&&+pick.value===j)o.classList.add("bad")});
+const e=box.querySelector(".exp");e.classList.remove("hide");
+e.textContent=(pick?(+pick.value===ans?"Sahi! ":"Galat. "):"Skip kiya. ")+"Correct answer: "+QUIZ[i][1][ans]+". "+QUIZ[i][3];});
+$("sub").remove();
+$("score").innerHTML=`<div class="score">Score: ${sc} / 10</div>${un?`<p>${un} question attempt nahi kiye.</p>`:""}<button class="btn alt" id="again">Dobara try karo</button>`;
+$("again").onclick=()=>{startQuiz();go("quiz")};
+$("score").scrollIntoView();}
+
+function buildIndex(){
+const out=[];
+SUBJECTS.forEach(s=>{out.push({t:s.name,k:"Subject (sample)",x:s.name+" "+s.hi,a:()=>{st.sub=s.id;drawSubs();drawChs();go("subjects")}});
+s.chapters.forEach(c=>out.push({t:c.name,k:"Chapter in "+s.name,x:c.name+" "+s.name,a:()=>{st.sub=s.id;drawSubs();drawChs();openChapter(c.id)}}))});
+BRANCHES.slice(0,5).forEach((b,i)=>out.push({t:b[0],k:"Branch",x:b[0]+" "+b[1],a:()=>{st.branch=i;drawBranches();selText();go("semesters")}}));
+QUIZ.forEach(q=>out.push({t:q[0],k:"Quiz question (sample)",x:q[0]+" "+q[1].join(" "),a:()=>{st.sub="cf";drawSubs();drawChs();openChapter("cb")}}));
+return out}
+const IDX=buildIndex();
+$("q").addEventListener("input",e=>{
+const t=e.target.value.trim().toLowerCase(),r=$("results");
+if(t.length<2){r.innerHTML="";return}
+const hits=IDX.filter(i=>i.x.toLowerCase().includes(t)).slice(0,8);
+r.innerHTML=hits.length?"":"<p class='sel'>Kuch nahi mila. Koi aur word try karo.</p>";
+hits.forEach(h=>{const b=document.createElement("button");b.className="res";b.innerHTML=`${esc(h.t)}<small>${esc(h.k)}</small>`;b.onclick=()=>{h.a();r.innerHTML="";$("q").value=""};r.appendChild(b)})});
+
+drawBranches();drawSems();drawSubs();selText();
+</script>
+</body>
+  </html>
+    
